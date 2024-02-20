@@ -9,14 +9,22 @@
   outputs = inputs:
     let
       systems = import inputs.systems;
+      overlays = [ inputs.self.overlays.default ];
       lib = inputs.nixpkgs.lib;
       perSystem = f: lib.genAttrs systems f;
-      systemPkgs = system: import inputs.nixpkgs { inherit system; };
+      systemPkgs = system: import inputs.nixpkgs { inherit overlays system; };
       perSystemPkgs = f: perSystem (system: f (systemPkgs system));
     in
     {
+      overlays = {
+        egui = final: prev: {
+          egui = prev.callPackage ./default.nix { };
+        };
+        default = inputs.self.overlays.egui;
+      };
+
       packages = perSystemPkgs (pkgs: {
-        egui = pkgs.callPackage ./default.nix { };
+        egui = pkgs.egui;
         default = inputs.self.packages.${pkgs.system}.egui;
       });
 
