@@ -62,7 +62,7 @@ rustPlatform.buildRustPackage rec {
   ] ++ lib.optionals stdenv.isDarwin [
     darwin.apple_sdk.frameworks.AppKit
   ];
-  postFixup = ''
+  postFixup = lib.optionalString stdenv.isLinux ''
     for prog in $out/bin/*; do
       if [ -f "$prog" -a -x "$prog" ]; then
         wrapProgram "$prog" \
