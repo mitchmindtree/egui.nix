@@ -22,12 +22,12 @@
 }:
 rustPlatform.buildRustPackage rec {
   pname = "egui";
-  version = "0.27.2";
+  version = "0.28.1";
   src = fetchFromGitHub {
     owner = "emilk";
     repo = "egui";
     rev = version;
-    hash = "sha256-5hVbDHVCGjLKzJedcRkPPSgx1d9JF0nAAi0KBnFmo2g=";
+    hash = "sha256-zESs6BNcr8Vm5QTSUCyTzVnw4tJlpo/G+UfIg7Oa00M=";
   };
   cargoLock.lockFile = "${src}/Cargo.lock";
   doCheck = false;
