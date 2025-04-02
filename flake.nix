@@ -4,6 +4,10 @@
   inputs = {
     systems.url = "github:nix-systems/default";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    egui-src = {
+      url = "github:emilk/egui/0.28.1";
+      flake = false;
+    };
   };
 
   outputs = inputs:
@@ -18,7 +22,9 @@
     {
       overlays = {
         egui = final: prev: {
-          egui = prev.callPackage ./default.nix { };
+          egui = prev.callPackage ./default.nix {
+            inherit (inputs) egui-src;
+          };
         };
         default = inputs.self.overlays.egui;
       };

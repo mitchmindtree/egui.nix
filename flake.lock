@@ -1,5 +1,22 @@
 {
   "nodes": {
+    "egui-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1720174161,
+        "narHash": "sha256-zESs6BNcr8Vm5QTSUCyTzVnw4tJlpo/G+UfIg7Oa00M=",
+        "owner": "emilk",
+        "repo": "egui",
+        "rev": "abab06867cdbc8966cf1de1e5429a7b7f9126af2",
+        "type": "github"
+      },
+      "original": {
+        "owner": "emilk",
+        "ref": "0.28.1",
+        "repo": "egui",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1736344531,
@@ -18,6 +35,7 @@
     },
     "root": {
       "inputs": {
+        "egui-src": "egui-src",
         "nixpkgs": "nixpkgs",
         "systems": "systems"
       }
