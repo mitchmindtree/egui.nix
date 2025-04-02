@@ -5,7 +5,7 @@
     systems.url = "github:nix-systems/default";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     egui-src = {
-      url = "github:emilk/egui/0.28.1";
+      url = "github:emilk/egui/0.31.1";
       flake = false;
     };
   };

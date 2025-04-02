@@ -3,27 +3,27 @@
     "egui-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1720174161,
-        "narHash": "sha256-zESs6BNcr8Vm5QTSUCyTzVnw4tJlpo/G+UfIg7Oa00M=",
+        "lastModified": 1741159705,
+        "narHash": "sha256-gBsBNlGVEetZMq7kGGqIbcCwYwHVyAyqxWpFLY9/1mo=",
         "owner": "emilk",
         "repo": "egui",
-        "rev": "abab06867cdbc8966cf1de1e5429a7b7f9126af2",
+        "rev": "1669e52a7ccfc3489c1b0999b9ed48894a0b3887",
         "type": "github"
       },
       "original": {
         "owner": "emilk",
-        "ref": "0.28.1",
+        "ref": "0.31.1",
         "repo": "egui",
         "type": "github"
       }
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1736344531,
-        "narHash": "sha256-8YVQ9ZbSfuUk2bUf2KRj60NRraLPKPS0Q4QFTbc+c2c=",
+        "lastModified": 1743448293,
+        "narHash": "sha256-bmEPmSjJakAp/JojZRrUvNcDX2R5/nuX6bm+seVaGhs=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "bffc22eb12172e6db3c5dde9e3e5628f8e3e7912",
+        "rev": "77b584d61ff80b4cef9245829a6f1dfad5afdfa3",
         "type": "github"
       },
       "original": {
