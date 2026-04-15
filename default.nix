@@ -1,25 +1,29 @@
-{ atk
-, cargo
-, darwin
-, egui-src
-, fetchFromGitHub
-, gcc
-, gdk-pixbuf
-, lib
-, libxkbcommon
-, libGL
-, makeWrapper
-, pango
-, pkg-config
-, rubyPackages_3_3
-, rust-analyzer
-, rustfmt
-, rustPlatform
-, stdenv
-, vulkan-loader
-, xorg
-, wayland
-, XCURSOR_THEME ? "Adwaita"
+{
+  atk,
+  cargo,
+  darwin,
+  egui-src,
+  gcc,
+  gdk-pixbuf,
+  lib,
+  libxkbcommon,
+  libGL,
+  libx11,
+  libxcb,
+  libxcursor,
+  libxi,
+  libxrandr,
+  makeWrapper,
+  pango,
+  pkg-config,
+  rubyPackages_3_3,
+  rust-analyzer,
+  rustfmt,
+  rustPlatform,
+  stdenv,
+  vulkan-loader,
+  wayland,
+  XCURSOR_THEME ? "Adwaita",
 }:
 let
   manifest = builtins.readFile "${egui-src}/Cargo.toml";
@@ -40,18 +44,19 @@ rustPlatform.buildRustPackage rec {
     gcc
     rustfmt
     rust-analyzer
-  ] ++ lib.optionals stdenv.isLinux [
+  ]
+  ++ lib.optionals stdenv.isLinux [
     libxkbcommon
     # For those using OpenGL.
     libGL
     # For those using WGPU.
     vulkan-loader
     # For those on X11.
-    xorg.libX11
-    xorg.libxcb
-    xorg.libXcursor
-    xorg.libXi
-    xorg.libXrandr
+    libx11
+    libxcb
+    libxcursor
+    libxi
+    libxrandr
     # For those on Wayland.
     wayland
     # For the file_dialog example.
@@ -59,8 +64,6 @@ rustPlatform.buildRustPackage rec {
     gdk-pixbuf
     rubyPackages_3_3.gdk3
     pango
-  ] ++ lib.optionals stdenv.isDarwin [
-    darwin.apple_sdk.frameworks.AppKit
   ];
   postFixup = lib.optionalString stdenv.isLinux ''
     for prog in $out/bin/*; do

@@ -5,12 +5,13 @@
     systems.url = "github:nix-systems/default";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     egui-src = {
-      url = "github:emilk/egui/0.31.1";
+      url = "github:emilk/egui/0.34.1";
       flake = false;
     };
   };
 
-  outputs = inputs:
+  outputs =
+    inputs:
     let
       systems = import inputs.systems;
       overlays = [ inputs.self.overlays.default ];
@@ -31,12 +32,13 @@
 
       packages = perSystemPkgs (pkgs: {
         egui = pkgs.egui;
-        default = inputs.self.packages.${pkgs.system}.egui;
+        default = inputs.self.packages.${pkgs.stdenv.hostPlatform.system}.egui;
       });
 
-      apps = perSystemPkgs (pkgs:
+      apps = perSystemPkgs (
+        pkgs:
         let
-          egui = inputs.self.packages.${pkgs.system}.egui;
+          egui = inputs.self.packages.${pkgs.stdenv.hostPlatform.system}.egui;
         in
         {
           hello-world = {
@@ -47,23 +49,25 @@
             type = "app";
             program = "${egui}/bin/egui_demo_app";
           };
-        });
+        }
+      );
 
       devShells = perSystemPkgs (pkgs: {
         egui-dev = pkgs.callPackage ./shell.nix {
-          inherit (inputs.self.packages.${pkgs.system}) egui;
+          inherit (inputs.self.packages.${pkgs.stdenv.hostPlatform.system}) egui;
         };
-        default = inputs.self.devShells.${pkgs.system}.egui-dev;
+        default = inputs.self.devShells.${pkgs.stdenv.hostPlatform.system}.egui-dev;
       });
 
       lib = perSystemPkgs (pkgs: {
         buildEguiPackage =
-          { nativeBuildInputs
-          , buildInputs
-          ,
-          }: pkgs.rustPlatform.buildRustPackage { };
+          {
+            nativeBuildInputs,
+            buildInputs,
+          }:
+          pkgs.rustPlatform.buildRustPackage { };
       });
 
-      formatter = perSystemPkgs (pkgs: pkgs.nixpkgs-fmt);
+      formatter = perSystemPkgs (pkgs: pkgs.nixfmt-tree);
     };
 }

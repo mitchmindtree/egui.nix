@@ -1,7 +1,8 @@
-{ egui
-, lib
-, mkShell
-, stdenv
+{
+  egui,
+  lib,
+  mkShell,
+  stdenv,
 }:
 mkShell {
   name = "egui-dev";
