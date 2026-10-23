@@ -3,27 +3,27 @@
     "egui-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1774607158,
-        "narHash": "sha256-LA7wA7FXGjxvgleA5sM7/jbOe9kBqo91lFdolke9RXo=",
+        "lastModified": 1792078848,
+        "narHash": "sha256-EKlwSWeJ7J1temDP+s/4UDmeft5GFbUy3Y8KQ4U7TXA=",
         "owner": "emilk",
         "repo": "egui",
-        "rev": "a01193d032ae89e1ae80c56834993437b9467256",
+        "rev": "841a328ba2dd8f6996beb7189ebb7fc00e668a2a",
         "type": "github"
       },
       "original": {
         "owner": "emilk",
-        "ref": "0.34.1",
+        "ref": "0.37.0",
         "repo": "egui",
         "type": "github"
       }
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1775710090,
-        "narHash": "sha256-ar3rofg+awPB8QXDaFJhJ2jJhu+KqN/PRCXeyuXR76E=",
+        "lastModified": 1792502884,
+        "narHash": "sha256-IoNisKcGbUjdd45qCqywGMCYmZ5EnkxezvLII0FWwNA=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "4c1018dae018162ec878d42fec712642d214fdfa",
+        "rev": "02c087f3fe673c9e317f206a627cb6b910336dbe",
         "type": "github"
       },
       "original": {
@@ -42,11 +42,11 @@
     },
     "systems": {
       "locked": {
-        "lastModified": 1681028828,
-        "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
+        "lastModified": 1791244623,
+        "narHash": "sha256-uuanbkFk8a313Zfrxdcz8Us/yQtaxNnKJtX8v0ZPpd8=",
         "owner": "nix-systems",
         "repo": "default",
-        "rev": "da67096a3b9bf56a91d16901293e51ba5b49a27e",
+        "rev": "d36eeed142f88b5a636f2e3856a53c61654cf29b",
         "type": "github"
       },
       "original": {
