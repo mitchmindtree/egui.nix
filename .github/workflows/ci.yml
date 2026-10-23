@@ -5,7 +5,7 @@ on:
   pull_request:
   push:
     branches:
-      - master
+      - main
 
 jobs:
   nix-fmt-check:
@@ -13,7 +13,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - uses: DeterminateSystems/nix-installer-action@main
-    - run: nix fmt -- --check ./
+    - run: nix fmt -- --ci
 
   nix-build:
     runs-on: ubuntu-latest

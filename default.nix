@@ -1,10 +1,8 @@
 {
-  atk,
   cargo,
   darwin,
   egui-src,
   gcc,
-  gdk-pixbuf,
   lib,
   libxkbcommon,
   libGL,
@@ -14,9 +12,7 @@
   libxi,
   libxrandr,
   makeWrapper,
-  pango,
   pkg-config,
-  rubyPackages_3_3,
   rust-analyzer,
   rustfmt,
   rustPlatform,
@@ -45,7 +41,7 @@ rustPlatform.buildRustPackage rec {
     rustfmt
     rust-analyzer
   ]
-  ++ lib.optionals stdenv.isLinux [
+  ++ lib.optionals stdenv.hostPlatform.isLinux [
     libxkbcommon
     # For those using OpenGL.
     libGL
@@ -59,13 +55,8 @@ rustPlatform.buildRustPackage rec {
     libxrandr
     # For those on Wayland.
     wayland
-    # For the file_dialog example.
-    atk
-    gdk-pixbuf
-    rubyPackages_3_3.gdk3
-    pango
   ];
-  postFixup = lib.optionalString stdenv.isLinux ''
+  postFixup = lib.optionalString stdenv.hostPlatform.isLinux ''
     for prog in $out/bin/*; do
       if [ -f "$prog" -a -x "$prog" ]; then
         wrapProgram "$prog" \
@@ -74,7 +65,7 @@ rustPlatform.buildRustPackage rec {
       fi
     done
   '';
-  env = lib.optionalAttrs stdenv.isLinux {
+  env = lib.optionalAttrs stdenv.hostPlatform.isLinux {
     LD_LIBRARY_PATH = lib.makeLibraryPath buildInputs;
     inherit XCURSOR_THEME;
   };
